@@ -11,7 +11,7 @@
 		<section>
 			<section>
 				<h1 id="Responsible-Web-Applications">
-					<a href="#Responsible-Web-Applications" title="Responsible-Web-Applications"></a>Responsible Web Applications
+					<a href="#Responsible-Web-Applications"></a>Responsible Web Applications
 				</h1>
 				<p>By <a href="https://joyheron.com">Joy Heron</a></p>
 				<p>
@@ -42,7 +42,7 @@
 		</section>
 		<section class="responsive-web-design">
 			<section>
-				<h2 id="Responsive-Web-Design"><a href="#Responsive-Web-Design" title="Responsive-Web-Design"></a>Responsive Web Design</h2>
+				<h2 id="Responsive-Web-Design"><a href="#Responsive-Web-Design"></a>Responsive Web Design</h2>
 
 				<p>Do we really need responsive web design for our web application? We will only use our web application on desktop computers!</p>
 
@@ -53,12 +53,12 @@
 			</section>
 
 			<section>
-				<h3 id="Joy’s-First-Law-of-Web-Development"><a href="#Joy’s-First-Law-of-Web-Development" title="Joy’s-First-Law-of-Web-Development"></a>Joy’s First Law of Web Development</h3>
+				<h3 id="Joy’s-First-Law-of-Web-Development"><a href="#Joy’s-First-Law-of-Web-Development"></a>Joy’s First Law of Web Development</h3>
 				<p>There is no such thing as a non-responsive web application</p>
 				<p><em>Your web application WILL be opened in a mobile phone or tablet at some time in the future and your users WILL expect it to work correctly.</em></p>
 			</section>
 			<section>
-				<h3 id="Joy’s-Second-Law-of-Web-Development"><a href="#Joy’s-Second-Law-of-Web-Development" title="Joy’s-Second-Law-of-Web-Development"></a>Joy’s Second Law of Web Development</h3>
+				<h3 id="Joy’s-Second-Law-of-Web-Development"><a href="#Joy’s-Second-Law-of-Web-Development"></a>Joy’s Second Law of Web Development</h3>
 				<p>Any work you do now to ensure that your web application behaves responsively WILL be appreciated in the future.</p>
 			</section>
 			<section>
@@ -73,7 +73,7 @@
 				</ul>
 			</section>
 			<section class="subsubsection">
-				<h3 id="Responsive-Layout-Containers"><a href="#Responsive-Layout-Containers" title="Responsive-Layout-Containers"></a>Responsive Layout Containers</h3>
+				<h3 id="Responsive-Layout-Containers"><a href="#Responsive-Layout-Containers"></a>Responsive Layout Containers</h3>
 				<p>
 					We firstly need to make sure that we put a lot of thought into designing layout containers which adjust themselves based on the size of our viewport.
 				</p>
@@ -124,7 +124,7 @@
 				<p>How can we implement this? To do this, I like to use the following technique.</p>
 			</section>
 			<section>
-				<h4 id="CSS-Grid-with-Breakpoints"><a href="#CSS-Grid-with-Breakpoints" title="CSS-Grid-with-Breakpoints"></a>Explicit CSS Grid Layout with Breakpoints</h4>
+				<h4 id="CSS-Grid-with-Breakpoints"><a href="#CSS-Grid-with-Breakpoints"></a>Explicit CSS Grid Layout with Breakpoints</h4>
 
 				<p>
 					Using CSS Grid, I like to use the following technique to declaratively define a default CSS grid for our content.
@@ -133,35 +133,35 @@
 
 				<h5>CSS for Mobile Devices</h5>
 
-	<pre class="language-css"><code>.layout {
-		display: grid;
-		grid-template-areas:
-			"header"
-			"sidebar"
-			"main"
-			"sidebar-right"
-			"footer";
-		grid-template-rows: auto auto 1fr auto auto;
-	}
-	.layout > header {
-		grid-area: header;
-	}
-	.layout > aside:nth-of-type(1) {
-		grid-area: header;
-	}
-	.layout > main {
-		grid-area: main;
-	}
-	.layout > aside:nth-of-type(2) {
-		grid-area: header;
-	}
-	.layout > aside:nth-of-type(2) {
-		grid-area: header;
-	}
-	.layout > footer {
-		grid-area: footer;
-	}
-	</code></pre>
+<pre class="language-css"><code>.layout {
+	display: grid;
+	grid-template-areas:
+		"header"
+		"sidebar"
+		"main"
+		"sidebar-right"
+		"footer";
+	grid-template-rows: auto auto 1fr auto auto;
+}
+.layout > header {
+	grid-area: header;
+}
+.layout > aside:nth-of-type(1) {
+	grid-area: header;
+}
+.layout > main {
+	grid-area: main;
+}
+.layout > aside:nth-of-type(2) {
+	grid-area: header;
+}
+.layout > aside:nth-of-type(2) {
+	grid-area: header;
+}
+.layout > footer {
+	grid-area: footer;
+}
+</code></pre>
 
 				<p>
 					Note that this markup explicitly references the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main">
@@ -173,23 +173,23 @@
 					With the CSS operator <tt>></tt> we ensure that this element targeted is the direct child of the parent with my layout class (which we would probably add directly to our HTML <tt>body</tt>).
 				</p>
 
-				<h5 id="On-Tablets-or-larger-devices"><a href="#On-Tablets-or-larger-devices" title="On-Tablets-or-larger-devices"></a>CSS for tablets or larger devices</h5>
+				<h5 id="On-Tablets-or-larger-devices"><a href="#On-Tablets-or-larger-devices"></a>CSS for tablets or larger devices</h5>
 
 				<p>
 					Since we have already defined the <tt>grid-areas</tt> for our HTML elements, we can now declaratively change the layout using a relatively short CSS snippet within a media query:
 				</p>
 
-	<pre class="language-css"><code>@media (min-width: var(--tablet-portrait-up)) {
-		.layout {
-			grid-template-areas:
-				"header header header"
-				"sidebar main sidebar-right"
-				"footer footer footer";
-			grid-template-rows: auto 1fr auto;
-			grid-template-columns: 20% 1fr 20%;
-		}
+<pre class="language-css"><code>@media (min-width: var(--tablet-portrait-up)) {
+	.layout {
+		grid-template-areas:
+			"header header header"
+			"sidebar main sidebar-right"
+			"footer footer footer";
+		grid-template-rows: auto 1fr auto;
+		grid-template-columns: 20% 1fr 20%;
 	}
-	</code></pre>
+}
+</code></pre>
 
 					<p>
 						Note that when you are defining your breakpoints for your application,
@@ -198,7 +198,7 @@
 
 				</section>
 				<section class="subsubsection">
-					<h3 id="Squishy-Components"><a href="#Squishy-Components" title="Squishy-Components"></a>Squishy Components</h3>
+					<h3 id="Squishy-Components"><a href="#Squishy-Components"></a>Squishy Components</h3>
 
 					<p>
 						After we have a responsive layout, the next step is to make sure that all of our components are "squishy".
@@ -214,13 +214,13 @@
 					</p>
 				</section>
 				<section>
-					<h4 id="Flexbox--Flex-Wrap"><a href="#Flexbox--Flex-Wrap" title="Flexbox--Flex-Wrap"></a>Flexbox + Flex Wrap</h4>
+					<h4 id="Flexbox--Flex-Wrap"><a href="#Flexbox--Flex-Wrap"></a>Flexbox + Flex Wrap</h4>
 
-	<pre class="language-css"><code>.container {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	</code></pre>
+<pre class="language-css"><code>.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+</code></pre>
 
 					<p>We can use the <tt>display: flex;</tt> rule together with <tt>flex-wrap: wrap;</tt> </p>
 					<p>
@@ -268,7 +268,7 @@
 					</div>
 				</section>
 				<section>
-					<h4 id="Nested-Flexboxes"><a href="#Nested-Flexboxes" title="Nested-Flexboxes"></a>Nested Flexboxes</h4>
+					<h4 id="Nested-Flexboxes"><a href="#Nested-Flexboxes"></a>Nested Flexboxes</h4>
 					<p>
 						It is also possible to nest flexboxes to create more advanced responsive behavior.
 						This next example shows the same flex container from our last example, but highlights the
@@ -296,13 +296,13 @@
 					</div>
 				</section>
 				<section>
-					<h4 id="Intrinsic-Grid"><a href="#Intrinsic-Grid" title="Intrinsic-Grid"></a>Intrinsic Grid</h4>
-	<pre class="language-css"><code>.container {
-		display: grid;
-		grid-template-columns:
-			repeat(auto-fill, minmax(var(—col-width), auto));
-	}
-	</code></pre>
+					<h4 id="Intrinsic-Grid"><a href="#Intrinsic-Grid"></a>Intrinsic Grid</h4>
+<pre class="language-css"><code>.container {
+	display: grid;
+	grid-template-columns:
+		repeat(auto-fill, minmax(var(—col-width), auto));
+}
+</code></pre>
 					<p>
 						We can use the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">repeat</a> function
 						with <tt>grid-template-columns</tt> in order to create a grid which will generate as many columns as fit
@@ -332,12 +332,12 @@
 					</div>
 				</section>
 				<section>
-					<h4 id="Horizonal-Scrolling"><a href="#Horizontal-Scrolling" title="Horizontal-Scrolling"></a>Horizontal Scrolling</h4>
+					<h4 id="Horizonal-Scrolling"><a href="#Horizontal-Scrolling"></a>Horizontal Scrolling</h4>
 
-	<pre class="language-css"><code>.horizontal-scroll {
-		overflow-x: auto;
-	}
-	</code></pre>
+<pre class="language-css"><code>.horizontal-scroll {
+	overflow-x: auto;
+}
+</code></pre>
 
 					<p>
 						When we talk about creating an application which is responsive, this doesn't mean that we need to optimize
@@ -408,7 +408,7 @@
 				</div>
 				</section>
 				<section>
-				<h4 id="Squishy-Text"><a href="#Squishy-Text" title="Squishy-Text"></a>Squishy Text</h4>
+				<h4 id="Squishy-Text"><a href="#Squishy-Text"></a>Squishy Text</h4>
 
 <pre class="language-css"><code>.squishy-text {
 	word-break: break-word; /* Samsung browser */
@@ -442,7 +442,7 @@
 			</section>
 			<section class="accessible-web-design">
 				<section>
-					<h2 id="Accessible-Web-Design"><a href="#Accessible-Web-Design" title="Accessible-Web-Design"></a>Accessible Web Design</h2>
+					<h2 id="Accessible-Web-Design"><a href="#Accessible-Web-Design"></a>Accessible Web Design</h2>
 					<p>
 						We now come to accessibility.
 						Here I feel that I can only scratch the surface of the different things that we should consider.
@@ -451,7 +451,7 @@
 					</p>
 				</section>
 				<section>
-					<h3 id="Headings"><a href="#Headings" title="Headings"></a>Headings</h3>
+					<h3 id="Headings"><a href="#Headings"></a>Headings</h3>
 					<p>Don’t skip heading levels.</p>
 					<p>
 						In your HTML Document, you need to ensure that your document hierarchy is complete and doesn't skip levels.
@@ -479,14 +479,14 @@
 					</p>
 				</section>
 				<section>
-					<h3 id="nav"><a href="#nav" title="nav"></a>nav</h3>
+					<h3 id="nav"><a href="#nav"></a>nav</h3>
 					<p>
 						When you are providing links for a user to navigate within your page (e.g. a navbar or a table of contents),
 						you should wrap them in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav">nav</a>.
 					</p>
 				</section>
 				<section>
-					<h3 id="label"><a href="#label" title="label"></a>label</h3>
+					<h3 id="label"><a href="#label"></a>label</h3>
 					<p><em>Always</em> add a label to add extra context for input elements</p>
 
 <pre class="language-html"><code>&lt;label&gt;
@@ -505,7 +505,7 @@
 					</p>
 				</section>
 				<section>
-					<h3 id="ul-ol-dl"><a href="#ul-ol-dl" title="ul-ol-dl"></a>ul, ol, dl</h3>
+					<h3 id="ul-ol-dl"><a href="#ul-ol-dl"></a>Lists: ul, ol, dl</h3>
 					<p>
 						Using lists (an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">unordered list</a>,
 						an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol">ordered list</a>, or a
@@ -520,7 +520,7 @@
 					</p>
 				</section>
 				<section>
-					<h3 id="aria-expanded-for-developing-Accordions"><a href="#aria-expanded-for-developing-Accordions" title="aria-expanded-for-developing-Accordions"></a>details or aria-expanded for Accordions</h3>
+					<h3 id="aria-expanded-for-developing-Accordions"><a href="#aria-expanded-for-developing-Accordions"></a>details or aria-expanded for Accordions</h3>
 
 					<p>
 						If we need an accordion, or an element which shows/hides a content area,
@@ -599,13 +599,15 @@ customElements.define("toggle-button", ToggleButton, { extends: "button" });
 					<p><a href="https://joyheron.com/a11y-playground/collapser.html" target="_blank">Here is a code demo of this component.</a></p>
 				</section>
 				<section>
-					<h3 id="aria-label-and-aria-labelledby"><a href="#aria-label-and-aria-labelledby" title="aria-label-and-aria-labelledby"></a>aria-label and aria-labelledby</h3>
+					<h3 id="aria-label-and-aria-labelledby"><a href="#aria-label-and-aria-labelledby"></a>aria-label and aria-labelledby</h3>
 					<p>
 						Sometimes we have visual elements which add information to the UI,
 						but are missing in the UI. For these cases, we can use an <tt>aria-label</tt> with a
 						textual description of what the visual element is showing. If there is already a UI
 						element available, we can also use <tt>aria-labelledby</tt> and reference the HTML id of
 						the existing element.
+						The HTML <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title">title</a>
+						element is not well supported in screenreaders, so it should not be used to do this.
 					</p>
 					<p>
 						Here it really helps to test your UI in a screenreader so that you can figure out where
@@ -613,7 +615,7 @@ customElements.define("toggle-button", ToggleButton, { extends: "button" });
 					</p>
 				</section>
 				<section>
-					<h3 id="Hiding-content-visually-but-not-from-screenreaders"><a href="#Hiding-content-visually-but-not-from-screenreaders" title="Hiding-content-visually-but-not-from-screenreaders"></a>Hiding content visually (but not from screenreaders)</h3>
+					<h3 id="Hiding-content-visually-but-not-from-screenreaders"><a href="#Hiding-content-visually-but-not-from-screenreaders"></a>Hiding content visually (but not from screenreaders)</h3>
 
 <pre class="language-css" aria-label="CSS Code snippet to hide HTML visually"><code>.visually-hidden {
 	clip: rect(0 0 0 0);
@@ -637,7 +639,7 @@ customElements.define("toggle-button", ToggleButton, { extends: "button" });
 					</p>
 				</section>
 				<section>
-					<h3 id="Setting-focus-correctly"><a href="#Setting-focus-correctly" title="Setting-focus-correctly"></a>Setting focus correctly</h3>
+					<h3 id="Setting-focus-correctly"><a href="#Setting-focus-correctly"></a>Setting focus correctly</h3>
 					<p>
 						As long as you are writing only HTML and CSS,
 						there isn't any good reason why you would want to mess with the <tt>focus</tt> within your webpage,
