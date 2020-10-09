@@ -93,8 +93,11 @@ body {
 	margin: 0;
 }
 body > section {
-	padding: var(--spacer-lg) var(--spacer-sm);
+	padding: var(--spacer-lg) var(--spacer-sm) var(--spacer-xl);
 	margin: 0;
+}
+body > section:last-of-type {
+	padding-bottom: var(--spacer-lg);
 }
 body > section > section {
 	max-width: 60ch;
@@ -113,7 +116,7 @@ h2 {
 	margin-top: var(--spacer-base);
 }
 h3, h4, h5 {
-	margin-top: var(--spacer-base);
+	margin-top: var(--spacer-md);
 }
 h5 + *, h6 + * {
 	margin-top: var(--spacer-sm);
