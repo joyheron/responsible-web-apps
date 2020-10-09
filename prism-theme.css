@@ -1,0 +1,44 @@
+:root {
+	--code-green: #74FB9E;
+	--code-pink: #FF60AD;
+	--code-blue: #AEDFFF;
+	--code-purple: #D3B9FF;
+	--code-orange: #FFD174;
+}
+
+pre {
+	background-color: var(--gray-900);
+	color: var(--blue-300);
+	-moz-tab-size: 3;
+	tab-size: 3;
+}
+
+.token {
+	color: var(--blue-300);
+}
+.token.rule {
+	font-weight: bold;
+}
+.token.selector,
+.token.string,
+.token.attr-name {
+	color: var(--purple-400);
+}
+.token.function,
+.token.attr-value {
+	color: var(--code-pink);
+}
+.token.punctuation {
+	color: var(--blue-300);
+}
+.token.property,
+.token.tag,
+.token.class-name {
+	color: var(--code-green)
+}
+.token.comment {
+	color: var(--gray-200);
+}
+.token.keyword {
+	color: var(--code-orange);
+}
