@@ -94,6 +94,10 @@ body {
 }
 header {
 	padding: var(--spacer-base) var(--spacer-base) 0;
+	background-image:
+		radial-gradient(circle at 50% -20%, var(--pink-100) 50%, transparent 50.5%),
+		radial-gradient(circle at 75% 50%, var(--purple-100) 10%, transparent 10.5%);
+	background-repeat: no-repeat;
 }
 main > section {
 	padding: var(--spacer-lg) var(--spacer-base) var(--spacer-xl);
