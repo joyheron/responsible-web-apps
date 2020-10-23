@@ -92,7 +92,7 @@ body {
 	line-height: 1.6;
 	margin: 0;
 }
-header {
+body > header {
 	padding: var(--spacer-base) var(--spacer-base) 0;
 	background-image:
 		radial-gradient(circle at 50% -20%, var(--pink-100) 43%, transparent 43.5%),
