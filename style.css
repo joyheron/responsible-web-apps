@@ -1,5 +1,6 @@
 :root {
 	/* Styles taken from https://tailwindcss.com/ */
+	--box-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 	--box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
 	--pink-100: #FFF5F7;
@@ -65,6 +66,8 @@
 	--indigo-500: #667EEA;
 	--indigo-600: #5A67D8;
 	--indigo-700: #4C51BF;
+	--indigo-800: #434190;
+	--indigo-900: #3C366B;
 	--purple-100: #FAF5FF;
 	--purple-200: #E9D8FD;
 	--purple-300: #D6BCFA;
@@ -83,24 +86,32 @@
 	--spacer-xl: 5.25rem;
 
 	--body-padding-x: var(--spacer-base);
+	--body-padding-x-negative: calc(-1 * var(--body-padding-x));
 
-	--font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	--font-family-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--font-family-sans-bold: FFMarkWebProBold, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--font-family-sans: FFMarkWebProBook, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--font-family-serif: FreightTextPro, Georgia, Times, "Times New Roman", serif;
+	--font-family-mono: HackRegular, "Monaco", "Courier New", monospace;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-family-sans-bold);
+}
 body {
-	font-family: var(--font-family-sans);
+	font-family: var(--font-family-serif);
 	color: var(--gray-900);
 	line-height: 1.6;
 	margin: 0;
+	font-size: 1.125rem;
 }
 body > header {
 	padding: var(--spacer-base) var(--body-padding-x) 0;
 	background-image:
-		radial-gradient(circle at 50% -20%, var(--pink-100) 43%, #FFF5F700 43.5%),
+		radial-gradient(circle at 50% -20%, var(--pink-100) 37%, #FFF5F700 37.5%),
 		radial-gradient(circle at 30% 40%, var(--purple-100) 7%, #EBF4FF00 7.5%),
 		radial-gradient(circle at 75% 50%, var(--purple-100) 10%, #EBF4FF00 10.5%);
 	background-repeat: no-repeat;
+	font-family: var(--font-family-sans);
 }
 main > section {
 	padding: var(--spacer-lg) var(--body-padding-x) var(--spacer-xl);
@@ -116,6 +127,9 @@ main > section > section {
 }
 * {
 	margin-bottom: 0;
+}
+*, *::before, *::after {
+	box-sizing: border-box;
 }
 * + * {
 	margin-top: var(--spacer-sm);
@@ -159,9 +173,12 @@ tt {
 
 pre {
 	overflow: auto;
-	padding: var(--spacer-sm);
+	padding: var(--spacer-sm) var(--body-padding-x);
 	background-color: var(--gray-100);
 	line-height: 1.25;
+	margin-left: var(--body-padding-x-negative);
+	margin-right: var(--body-padding-x-negative);
+	box-shadow: var(--box-shadow-lg);
 }
 
 *:focus {
@@ -176,11 +193,11 @@ pre {
 }
 
 a {
-	color: var(--blue-500);
+	color: var(--blue-700);
 	text-decoration-color: var(--blue-200);
 }
 a:hover, a:focus {
-	color: var(--blue-600);
+	color: var(--blue-500);
 	text-decoration-color: var(--blue-300);
 }
 
@@ -208,25 +225,22 @@ body:not(.js) .js-only {
 }
 
 header > nav {
-	font-size: 0.875rem;
 	background-color: var(--blue-100);
 	padding: var(--spacer-base);
 	box-shadow: var(--box-shadow-lg);
 }
-header > nav a {
-	color: var(--blue-600);
-}
+
 /* CIRCLES LAYOUT */
-@media (min-width: 55rem) {
+@media (min-width: 65rem) {
 	.title {
-		margin-left: 10ch;
-		margin-bottom: var(--spacer-sm);
+		margin-left: 6ch;
+		margin-bottom: var(--spacer-md);
 	}
 	header > nav {
-		margin-left: -15rem;
+		margin-left: -20rem;
 		float: left;
-		shape-outside: circle(19.25rem at 1.5rem 38%);
-		padding: 3.5rem 5.5rem 3.5rem 7.5rem;
+		shape-outside: circle(21rem at 1.5rem 40%);
+		padding: 3.5rem 6.5rem 3.5rem 9rem;
 		margin-top: -5.5rem;
 		margin-right: 3rem;
 		margin-bottom: 3rem;
@@ -237,15 +251,18 @@ header > nav a {
 	}
 }
 header > nav > ul {
-	font-size: 0.875rem;
+	font-size: 1rem;
 	margin-top: var(--spacer-xs);
 }
 header > nav * {
 	margin-top: 0;
 }
+header > nav li {
+	padding-top: var(--spacer-xs);
+}
 
 header > nav > h2 {
-	font-size: 0.875rem;
+	font-size: 1rem;
 	display: flex;
 }
 toggle-button {
@@ -284,6 +301,9 @@ toggle-button [aria-expanded=true] svg {
 	.hide {
 		display: block;
 	}
+	header > nav li {
+		padding-top: 0;
+	}
 }
 
 body > footer {
@@ -295,6 +315,68 @@ body > footer {
 }
 body > footer img {
 	max-width: 3rem;
+}
+
+blockquote {
+	display: flex;
+	background-color: white;
+	margin-left: var(--body-padding-x-negative);
+	margin-right: var(--body-padding-x-negative);
+	padding: var(--spacer-sm) var(--spacer-base);
+	box-shadow: var(--box-shadow-md);
+	align-items: center;
+}
+blockquote blockquote-quote {
+	display: flex;
+	justify-content: center;
+}
+blockquote blockquote-quote::before {
+	content: "‟";
+	font-size: 3rem;
+	font-family: var(--font-family-serif);
+	color: var(--indigo-200);
+	height: 3rem;
+	margin-right: var(--spacer-sm);
+}
+blockquote > * {
+	margin: 0;
+}
+
+.em-list {
+	list-style-type: none;
+	font-size: 2rem;
+	background-color: white;
+	box-shadow: var(--box-shadow-lg);
+	margin-left: var(--body-padding-x-negative);
+	margin-right: var(--body-padding-x-negative);
+	padding-left: var(--body-padding-x);
+	margin-bottom: var(--spacer-md);
+	position: relative;
+	display: grid;
+	grid-template-columns: var(--spacer-md) 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-column-gap: var(--spacer-sm);
+}
+.em-list > * {
+	line-height: 1.2;
+	grid-column-start: 2;
+	padding: var(--spacer-xs);
+	margin: 0;
+}
+.em-list [data-and] {
+	font-size: 3rem;
+	color: var(--indigo-500);
+	grid-row: 1 / 3;
+	grid-column-start: 1;
+	align-self: center;
+	justify-self: center;
+}
+.em-list a {
+	text-decoration: none;
+	color: var(--indigo-900);
+}
+.em-list li:not([data-and]):hover {
+	background-color: var(--gray-100);
 }
 
 figure {
@@ -349,6 +431,7 @@ figcaption {
 }
 .responsive-example article {
 	margin-bottom: var(--spacer-base);
+	font-family: var(--font-family-sans);
 }
 .responsive-example .caption {
 	font-style: italic;
@@ -443,6 +526,9 @@ figcaption {
 	display: flex;
 	flex-wrap: wrap;
 }
+.flexbox-example h5 {
+	margin-bottom: var(--spacer-xxs);
+}
 .flexbox-example > * {
 	margin: 0;
 	padding: var(--spacer-sm);
@@ -498,10 +584,10 @@ figcaption {
 
 .example-table {
 	overflow-x: scroll;
-	background-color: var(--blue-100);
 }
 .example-table table {
 	border-collapse: collapse;
+	background-color: var(--blue-100);
 }
 .example-table th,
 .example-table td {
@@ -510,10 +596,11 @@ figcaption {
 }
 
 .box-example {
+	font-family: var(--font-family-sans);
 	padding: var(--spacer-base);
 	border: 1px dashed var(--gray-500);
 	font-size: 2rem;
-	width: 5rem;
+	width: 8rem;
 	margin-right: 5rem;
 	line-height: 1;
 	background-color: white;

@@ -105,17 +105,28 @@
 				</section>
 				<section>
 					<h3 id="Joy’s-First-Law-of-Web-Development">Joy’s First Law of Web Development<a href="#Joy’s-First-Law-of-Web-Development" aria-label="Link to Joy's First Law of Web Development"></a></h3>
+					<blockquote>
+						<blockquote-quote aria-hidden="true"></blockquote-quote>
 						<p>There is no such thing as a non-responsive web application</p>
+					</blockquote>
+
 						<p><em>Your web application WILL be opened in a mobile phone or tablet at some time in the future and your users WILL expect it to work correctly.</em></p>
 				</section>
 				<section>
 					<h3 id="Joy’s-Second-Law-of-Web-Development">Joy’s Second Law of Web Development<a href="#Joy’s-Second-Law-of-Web-Development" aria-label="Link to Joy's Second Law of Web Development"></a></h3>
-					<p>Any work you do now to ensure that your web application behaves responsively WILL be appreciated in the future.</p>
+					<blockquote>
+						<blockquote-quote aria-hidden="true"></blockquote-quote>
+						Any work you do now to ensure that your web application behaves responsively WILL be appreciated in the future.
+					</blockquote>
 				</section>
 				<section>
 					<p>When it comes to the technical implementation of responsive design, there are two main categories of components that we need to develop:</p>
-					<p><strong>Responsive Layout Containers & Squishy Components</strong></p>
-					<p>We want to cover these two aspects in the next sections</p>
+					<ul class="em-list squishy-text">
+						<li><a href="#Responsive-Layout-Containers">Responsive Layout Containers</a></li>
+						<li aria-hidden="true" data-and>&</li>
+						<li><a href="#Squishy-Components">Squishy Components</a></li>
+					</ul>
+					<p>I want to cover these two aspects in the next sections</p>
 				</section>
 				<section class="subsubsection">
 					<h3 id="Responsive-Layout-Containers">Responsive Layout Containers<a href="#Responsive-Layout-Containers" aria-label="Link to Responsive Layout Containers"></a></h3>
@@ -610,7 +621,7 @@
 
 <pre class="language-html" aria-label="HTML Code showing how to use a label element to wrap around an input field."><code>&lt;label&gt;
 	First Name
-	&lt;input type="text" value="name" placeholder="Jane Smith" /&gt;
+	&lt;input type="text" value="name" placeholder="Jane" /&gt;
 &lt;/label&gt;
 </code></pre>
 
@@ -680,7 +691,9 @@
 						</p>
 
 <pre class="language-html" aria-label="HTML code showing the contract for the toggle-button component"><code>&lt;button is="toggle-button" data-target="#section2"
-		aria-expanded="false" hidden&gt;Toggle Section 2&lt;/button&gt;
+		  aria-expanded="false" hidden&gt;
+		Toggle Section 2
+&lt;/button&gt;
 </code></pre>
 
 						<p><em>aria-expanded</em> is an attribute of the <strong>BUTTON</strong> which tells assistive technologies if the content area that is being expanded/collapsed is currently visible or not.</p>
