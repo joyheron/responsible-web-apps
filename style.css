@@ -312,6 +312,7 @@ body > footer {
 	align-items: center;
 	padding: 0 var(--body-padding-x) var(--spacer-sm);
 	background-color: var(--gray-100);
+	font-family: var(--font-family-sans);
 }
 body > footer img {
 	max-width: 3rem;
@@ -362,6 +363,8 @@ blockquote > * {
 	grid-column-start: 2;
 	padding: var(--spacer-xs);
 	margin: 0;
+	display: flex;
+	align-items: center;
 }
 .em-list [data-and] {
 	font-size: 3rem;
