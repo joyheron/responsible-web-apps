@@ -82,6 +82,8 @@
 	--spacer-lg: 3.25rem;
 	--spacer-xl: 5.25rem;
 
+	--body-padding-x: var(--spacer-base);
+
 	--font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--font-family-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -93,15 +95,15 @@ body {
 	margin: 0;
 }
 body > header {
-	padding: var(--spacer-base) var(--spacer-base) 0;
+	padding: var(--spacer-base) var(--body-padding-x) 0;
 	background-image:
-		radial-gradient(circle at 50% -20%, var(--pink-100) 43%, transparent 43.5%),
-		radial-gradient(circle at 30% 40%, var(--purple-100) 7%, transparent 7.5%),
-		radial-gradient(circle at 75% 50%, var(--purple-100) 10%, transparent 10.5%);
+		radial-gradient(circle at 50% -20%, var(--pink-100) 43%, #FFF5F700 43.5%),
+		radial-gradient(circle at 30% 40%, var(--purple-100) 7%, #EBF4FF00 7.5%),
+		radial-gradient(circle at 75% 50%, var(--purple-100) 10%, #EBF4FF00 10.5%);
 	background-repeat: no-repeat;
 }
 main > section {
-	padding: var(--spacer-lg) var(--spacer-base) var(--spacer-xl);
+	padding: var(--spacer-lg) var(--body-padding-x) var(--spacer-xl);
 	margin: 0;
 }
 main > section:first-of-type {
@@ -170,6 +172,7 @@ pre {
 .visually-hidden {
 	max-height: 0;
 	font-size: 0;
+	margin: 0;
 }
 
 a {
@@ -222,8 +225,8 @@ header > nav a {
 	header > nav {
 		margin-left: -15rem;
 		float: left;
-		shape-outside: circle(17.5rem at 2rem 35%);
-		padding: 3.5rem 5.5rem 3.5rem 6.5rem;
+		shape-outside: circle(19.25rem at 1.5rem 38%);
+		padding: 3.5rem 5.5rem 3.5rem 7.5rem;
 		margin-top: -5.5rem;
 		margin-right: 3rem;
 		margin-bottom: 3rem;
@@ -248,6 +251,7 @@ header > nav > h2 {
 toggle-button {
 	display: flex;
 	align-items: center;
+	position: relative;
 }
 toggle-button > button {
 	background-color: transparent;
@@ -286,7 +290,7 @@ body > footer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 0 var(--spacer-sm) var(--spacer-sm);
+	padding: 0 var(--body-padding-x) var(--spacer-sm);
 	background-color: var(--gray-100);
 }
 body > footer img {
@@ -296,10 +300,10 @@ body > footer img {
 figure {
 	background-color: white;
 	box-shadow: var(--box-shadow-lg);
-	margin: var(--spacer-base) 0;
+	margin: var(--spacer-base) calc(-1 * var(--body-padding-x));
 }
 figcaption {
-	padding: var(--spacer-base) var(--spacer-md);
+	padding: var(--spacer-base);
 	background-color: var(--gray-100);
 }
 
@@ -335,24 +339,22 @@ figcaption {
 }
 
 .responsive-example {
-	--gap: var(--spacer-sm);
+	--gap: var(--spacer-base);
 
 	margin: calc(-1 * var(--spacer-sm) / 2);
-	padding: var(--spacer-md) var(--spacer-md) var(--spacer-sm);
+	padding: var(--spacer-base) var(--spacer-base) var(--spacer-sm);
 }
 .responsive-example > * {
 	margin: calc(var(--gap) / 2);
 }
-.responsive-example + * {
-	margin-top: var(--spacer-base);
-}
-.responsive-example article:nth-of-type(2) {
-	flex-wrap: nowrap;
+.responsive-example article {
+	margin-bottom: var(--spacer-base);
 }
 .responsive-example .caption {
 	font-style: italic;
 	font-size: 0.875rem;
 	color: var(--gray-600);
+	margin-bottom: 0;
 }
 .responsive-example .caption.tabletUp {
 	display: none;
@@ -360,14 +362,15 @@ figcaption {
 @media (min-width: 30rem) {
 	.responsive-example {
 		display: grid;
-		grid-template-columns: 10rem 1fr;
+		grid-template-columns: 12.5rem 1fr;
 	}
 	.responsive-example article {
 		grid-row-start: 2;
 	}
-	.responsive-example article ~ .caption {
+	.responsive-example footer.caption {
 		grid-column: span 2;
 		grid-row-start: 3;
+		margin-top: 0;
 	}
 }
 @media (hover: hover) and (min-width: 25rem) {
@@ -447,6 +450,9 @@ figcaption {
 	border: 1px dashed var(--gray-300);
 	flex-grow: 1;
 }
+.flexbox-example:nth-of-type(2) {
+	flex-wrap: nowrap;
+}
 .flexbox-example > * > * {
 	margin: 0;
 }
@@ -473,7 +479,10 @@ figcaption {
 
 .intrinsic-grid-example {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(8rem, auto));
+	grid-template-columns: repeat(auto-fill, minmax(7rem, auto));
+}
+.intrinsic-grid-example:nth-of-type(1) {
+	grid-template-columns: repeat(auto-fill, minmax(11rem, auto));;
 }
 .intrinsic-grid-example > * {
 	margin: 0;
@@ -489,7 +498,7 @@ figcaption {
 
 .example-table {
 	overflow-x: scroll;
-	background-color: white;
+	background-color: var(--blue-100);
 }
 .example-table table {
 	border-collapse: collapse;
