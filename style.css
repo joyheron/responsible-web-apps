@@ -85,8 +85,10 @@
 	--spacer-lg: 3.25rem;
 	--spacer-xl: 5.25rem;
 
+	--default-container-width: 50rem;
+	--container-width: var(--default-container-width);
+
 	--body-padding-x: var(--spacer-base);
-	--body-padding-x-negative: calc(-1 * var(--body-padding-x));
 
 	--font-family-sans-bold: FFMarkWebProBold, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	--font-family-sans: FFMarkWebProBook, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -121,9 +123,10 @@ main > section:first-of-type {
 	padding-top: 0;
 }
 header,
-main > section > section {
-	max-width: 60ch;
-	margin: auto;
+main > section > * {
+	max-width: var(--container-width);
+	margin-left: auto;
+	margin-right: auto;
 }
 * {
 	margin-bottom: 0;
@@ -176,8 +179,6 @@ pre {
 	padding: var(--spacer-sm) var(--body-padding-x);
 	background-color: var(--gray-100);
 	line-height: 1.25;
-	margin-left: var(--body-padding-x-negative);
-	margin-right: var(--body-padding-x-negative);
 	box-shadow: var(--box-shadow-lg);
 }
 
@@ -322,11 +323,13 @@ body > footer img {
 	max-width: 3rem;
 }
 
+blockquote, pre, figure, .negative-padding {
+	--container-width: calc(var(--default-container-width) + var(--body-padding-x) * 2);
+}
+
 blockquote {
 	display: flex;
 	background-color: white;
-	margin-left: var(--body-padding-x-negative);
-	margin-right: var(--body-padding-x-negative);
 	padding: var(--spacer-sm) var(--spacer-base);
 	box-shadow: var(--box-shadow-md);
 	align-items: center;
@@ -352,8 +355,6 @@ blockquote > * {
 	font-size: 2rem;
 	background-color: white;
 	box-shadow: var(--box-shadow-lg);
-	margin-left: var(--body-padding-x-negative);
-	margin-right: var(--body-padding-x-negative);
 	padding-left: var(--body-padding-x);
 	margin-bottom: var(--spacer-md);
 	position: relative;
