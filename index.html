@@ -642,12 +642,19 @@
 					<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl">description list</a>) for things in a UI will also add extra context for assistive technologies.
 					For instance, it will tell assistive technologies how many elements are contained in a list.
 				</p>
-				<p>
+				<p><del datetime="2021-01-22T08:41:57Z">
+					In practice, description lists can be difficult to style because we are not allowed to add an extra <code>div</code> as a wrapper around the <code>dt</code> and <code>dd</code> elements.
+					For this reason, I've also done <a href="https://joyheron.com/a11y-playground/represent-labelled-information.html" target="_blank">some experiments about how to best group information in the UI</a>.
+					Here there isn't a single correct solution.
+					You will have to find out what works best for your UI.
+                </del></p>
+                
+                <p class="insert"><ins datetime="2021-01-22T08:41:57Z">
 					<em>Update:</em> Originally, I discussed having difficulties styling description lists.
 					This statement is no longer correct for modern browsers which implement the
 					<a href="https://www.w3.org/TR/html52/grouping-content.html#the-dl-element">HTML 5.2 Recommendation</a>
 					because they now allow a <code>div</code> as a wrapper around the <code>dt</code> and <code>dd</code> elements.
-				</p>
+                </ins></p>
 
 				<h3 id="accordions">Accordions<a href="#aria-expanded-for-developing-Accordions" aria-label="Link to Accordions"></a></h3>
 
