@@ -247,13 +247,13 @@
 					footer</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside">
 					aside</a> semantic HTML elements in the CSS code.
 					This was intentional here, because it forces us to then use the semantic HTML elements and add important landmarks to our web application which improves its accessibility.
-					With the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator">child combinator</a> operator (<tt>></tt>) we ensure that this element targeted is the direct child of the parent with my layout class (which we would probably add directly to our HTML body).
+					With the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator">child combinator</a> operator (<code>></code>) we ensure that this element targeted is the direct child of the parent with my layout class (which we would probably add directly to our HTML body).
 				</p>
 
 				<h5 id="On-Tablets-or-larger-devices">CSS for tablets or larger devices</h5>
 
 				<p>
-					Since we have already defined the <tt>grid-areas</tt> for our HTML elements, we can now declaratively change the layout using a relatively short CSS snippet within a media query:
+					Since we have already defined the <code>grid-areas</code> for our HTML elements, we can now declaratively change the layout using a relatively short CSS snippet within a media query:
 				</p>
 
 <pre class="language-css" aria-label="CSS Code used to program the Responsive Layout example for larger devices"><code>@media (min-width: var(--tablet-portrait-up)) {
@@ -297,9 +297,9 @@
 </code></pre>
 
 				<p>
-					We can use the <tt>display: flex;</tt> rule to make the container
+					We can use the <code>display: flex;</code> rule to make the container
 					a <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">flexbox</a> and
-					then use the <tt>flex-wrap: wrap;</tt> rule to wrap content within the flexbox.
+					then use the <code>flex-wrap: wrap;</code> rule to wrap content within the flexbox.
 				</p>
 				<p>
 					When there is not enough space for the items to be placed horizontally,
@@ -406,7 +406,7 @@
 
 				<p>
 					We can use the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">repeat</a> function
-					with <tt>grid-template-columns</tt> in order to create an intrinsic grid which will generate as
+					with <code>grid-template-columns</code> in order to create an intrinsic grid which will generate as
 					many columns as fit in the given space. An example using this type of grid is available in
 					<a href="https://github.com/innoq/livecoding-css-layout">my demo for live-coding css layout</a>.
 				</p>
@@ -587,8 +587,8 @@
 				</p>
 				<p>
 					This is a mistake that many developers make,
-					because we pay attention to how the heading appears visually without making sure that an <tt>h2</tt> is always
-					directly followed by a <tt>h3</tt>.
+					because we pay attention to how the heading appears visually without making sure that an <code>h2</code> is always
+					directly followed by a <code>h3</code>.
 				</p>
 
 				<h3 id="Landmarks">Landmarks<a href="#Landmarks" aria-label="Link to Landmarks"></a></h3>
@@ -601,7 +601,7 @@
 					This makes the page much easier to navigate.
 				</p>
 				<p>
-					Note that the <tt>main</tt> element is not well supported for IE11, so if you have to
+					Note that the <code>main</code> element is not well supported for IE11, so if you have to
 					support older browsers, you should also consider using <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Main_role#Skip_navigation">skip links</a>.
 				</p>
 
@@ -625,10 +625,10 @@
 
 				<p>
 					Here we either wrap the input field directly in the label,
-					or we can use the <tt>for</tt> attribute and link it to a specific input field.
+					or we can use the <code>for</code> attribute and link it to a specific input field.
 				</p>
 				<p>
-					Here it is important to not use the <tt>placeholder</tt> attribute to label the input field.
+					Here it is important to not use the <code>placeholder</code> attribute to label the input field.
 					The placeholder attribute should be used to show an example of how the data we expect should appear.
 					This is particularly important for users who have congnitive disabilities, because when the instructions
 					in the placeholder disappear, they may not remember what they were supposed to enter into the field.
@@ -643,7 +643,7 @@
 					For instance, it will tell assistive technologies how many elements are contained in a list.
 				</p>
 				<p>
-					In practice, description lists can be difficult to style because we are not allowed to add an extra <tt>div</tt> as a wrapper around the <tt>dt</tt> and <tt>dd</tt> elements.
+					In practice, description lists can be difficult to style because we are not allowed to add an extra <code>div</code> as a wrapper around the <code>dt</code> and <code>dd</code> elements.
 					For this reason, I've also done <a href="https://joyheron.com/a11y-playground/represent-labelled-information.html" target="_blank">some experiments about how to best group information in the UI</a>.
 					Here there isn't a single correct solution.
 					You will have to find out what works best for your UI.
@@ -664,9 +664,9 @@
 </code></pre>
 
 				<p>
-					We can also implement this in JavaScript using a <tt>button</tt> and the
-					<tt>aria-expanded</tt> attribute.
-					The <tt>aria-expanded</tt> attribute adds context information to the <em>button</em> which will tell the screenreader
+					We can also implement this in JavaScript using a <code>button</code> and the
+					<code>aria-expanded</code> attribute.
+					The <code>aria-expanded</code> attribute adds context information to the <em>button</em> which will tell the screenreader
 					if the area that the button is toggling is currently collapsed or expanded.
 				</p>
 				<p>
@@ -683,7 +683,7 @@
 					will only be hidden once JavaScript is activated.
 				</p>
 				<p>
-					The contract for the <tt>toggle-button</tt> component that I usually end up writing therefore usually looks something like this:
+					The contract for the <code>toggle-button</code> component that I usually end up writing therefore usually looks something like this:
 				</p>
 
 <pre class="language-html" aria-label="HTML code showing the contract for the toggle-button component"><code>&lt;button is="toggle-button" data-target="#section2"
@@ -695,7 +695,7 @@
 				<p><em>aria-expanded</em> is an attribute of the <strong>BUTTON</strong> which tells assistive technologies if the content area that is being expanded/collapsed is currently visible or not.</p>
 
 				<p>
-					And my <tt>toggle-button</tt> implementation usually looks a lot like the following
+					And my <code>toggle-button</code> implementation usually looks a lot like the following
 					(I really need to standardize this and publish a custom element one of these days...):
 				</p>
 
@@ -760,7 +760,7 @@ customElements.define("toggle-button", ToggleButton, { extends: "button" });
 
 				<p>
 					Sometimes we want to hide elements from our UI.
-					If we use a CSS rule like <tt>display: none;</tt>
+					If we use a CSS rule like <code>display: none;</code>
 					this not only hides the element visually,
 					but also hides it from assistive technologies.
 					We can use the previous CSS snippet (or one like it),
@@ -781,7 +781,7 @@ customElements.define("toggle-button", ToggleButton, { extends: "button" });
 				<p>
 					When using images in a user interface, we need to set
 					the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/alt">alt</a> attribute for the image.
-					Here we should be verbose: we should use the <tt>alt</tt> to describe the picture visually for those users who
+					Here we should be verbose: we should use the <code>alt</code> to describe the picture visually for those users who
 					cannot see it.
 				</p>
 
@@ -801,7 +801,7 @@ customElements.define("toggle-button", ToggleButton, { extends: "button" });
 				<h3 id="Setting-focus-correctly">Setting focus correctly<a href="#Setting-focus-correctly" aria-label="Link to setting focus correctly"></a></h3>
 				<p>
 					As long as you are writing only HTML and CSS,
-					there isn't any good reason why you would want to mess with the <tt>focus</tt> within your webpage,
+					there isn't any good reason why you would want to mess with the <code>focus</code> within your webpage,
 					because the semantics and structure of HTML is very well designed.
 					However, when we begin to modify the HTML of our application with client-side JavaScript,
 					we need to think about the focus and if we need to update it as well.

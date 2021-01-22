@@ -164,10 +164,10 @@ ol, ul {
 	padding-left: var(--spacer-base);
 }
 
-pre, tt {
+pre, p code {
 	font-family: var(--font-family-mono);
 }
-tt {
+p code {
 	display: inline-block;
 	background-color: var(--gray-100);
 	padding: 0 var(--spacer-xxs);
