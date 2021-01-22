@@ -635,3 +635,17 @@ figcaption {
 	line-height: 1;
 	background-color: white;
 }
+
+del code, del a {
+    text-decoration: line-through;
+    font-family: unset;
+}
+
+ins, ins code {
+    text-decoration: none;
+}
+
+.insert {
+    background-color: var(--teal-100);
+    padding: var(--spacer-base);
+}
