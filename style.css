@@ -236,7 +236,7 @@ header > nav {
 }
 
 /* CIRCLES LAYOUT */
-@media (min-width: 65rem) {
+@media (min-width: 68rem) {
 	.title {
 		margin-left: 6ch;
 		margin-bottom: var(--spacer-md);
@@ -299,7 +299,7 @@ toggle-button [aria-expanded=true] svg {
 .hide {
 	display: none;
 }
-@media (min-width: 55rem) {
+@media (min-width: 68rem) {
 	toggle-button button {
 		display: none;
 	}
