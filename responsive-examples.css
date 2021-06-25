@@ -20,6 +20,9 @@
 .responsive-example .caption.tabletUp {
 	display: none;
 }
+.responsive-example article:first-of-type {
+	max-width: var(--example-mobile-width);
+}
 @media (min-width: 30rem) {
 	.responsive-example {
 		display: grid;
@@ -39,6 +42,7 @@
 		flex: auto 0;
 		resize: both;
 		overflow: auto;
+		max-width: unset;
 		box-shadow: var(--box-shadow-lg);
 	}
 	.js .responsive-example .caption:not(.tabletUp) {
@@ -146,7 +150,7 @@
 	grid-template-columns: repeat(auto-fill, minmax(7rem, auto));
 }
 .intrinsic-grid-example:nth-of-type(1) {
-	grid-template-columns: repeat(auto-fill, minmax(11rem, auto));;
+	grid-template-columns: repeat(auto-fill, minmax(11rem, auto));
 }
 .intrinsic-grid-example > * {
 	margin: 0;
