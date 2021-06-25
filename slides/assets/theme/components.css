@@ -1,0 +1,149 @@
+:root {
+	/* Styles taken from https://tailwindcss.com/ */
+	--box-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	--box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+	--pink-100: #FFF5F7;
+	--pink-200: #FED7E2;
+	--pink-300: #FBB6CE;
+	--pink-400: #F687B3;
+	--pink-500: #ED64A6;
+	--pink-600: #D53F8C;
+	--pink-700: #B83280;
+	--gray-100: #F7FAFC;
+	--gray-200: #edf2f7;
+	--gray-300: #E2E8F0;
+	--gray-400: #cbd5e0;
+	--gray-500: #a0aec0;
+	--gray-600: #718096;
+	--gray-700: #4a5568;
+	--gray-800: #2d3748;
+	--gray-900: #1A202C;
+	--black: #000;
+	--red-100: #FFF5F5;
+	--red-200: #FED7D7;
+	--red-300: #FEB2B2;
+	--red-400: #FC8181;
+	--red-500: #F56565;
+	--red-600: #E53E3E;
+	--red-700:#C53030;
+	--orange-100: #FFFAF0;
+	--orange-200: #FEEBC8;
+	--orange-300: #FBD38D;
+	--orange-400: #F6AD55;
+	--orange-500: #ED8936;
+	--orange-600: #DD6B20;
+	--orange-700: #C05621;
+	--orange-800: #9C4221;
+	--orange-900: #7B341E;
+	--green-100: #F0FFF4;
+	--green-200: #C6F6D5;
+	--green-300: #9AE6B4;
+	--green-400: #68D391;
+	--green-500: #48BB78;
+	--green-600: #38A169;
+	--green-700: #2F855A;
+	--teal-100: #E6FFFA;
+	--teal-200: #B2F5EA;
+	--teal-300: #81E6D9;
+	--teal-400: #4FD1C5;
+	--teal-500: #38B2AC;
+	--teal-600: #319795;
+	--teal-700: #2C7A7B;
+	--blue-100: #EBF8FF;
+	--blue-200: #BEE3F8;
+	--blue-300: #90CDF4;
+	--blue-400: #63B3ED;
+	--blue-500: #4299E1;
+	--blue-600: #3182CE;
+	--blue-700: #2B6CB0;
+	--blue-800: #2C5282;
+	--blue-900: #2A4365;
+	--indigo-100: #EBF4FF;
+	--indigo-200: #C3DAFE;
+	--indigo-300: #A3BFFA;
+	--indigo-400: #7F9CF5;
+	--indigo-500: #667EEA;
+	--indigo-600: #5A67D8;
+	--indigo-700: #4C51BF;
+	--indigo-800: #434190;
+	--indigo-900: #3C366B;
+	--purple-100: #FAF5FF;
+	--purple-200: #E9D8FD;
+	--purple-300: #D6BCFA;
+	--purple-400: #B794F4;
+	--purple-500: #9F7AEA;
+	--purple-600: #805AD5;
+	--purple-700: #6B46C1;
+
+	--spacer-xxxs: 0.125rem;
+	--spacer-xxs: 0.25rem;
+	--spacer-xs: 0.5rem;
+	--spacer-sm: 0.75rem;
+	--spacer-base: 1.25rem;
+	--spacer-md: 2rem;
+	--spacer-lg: 3.25rem;
+	--spacer-xl: 5.25rem;
+
+  --example-mobile-width: 20rem;
+	--flex-wrapper-gap: 5rem;
+	--box-example-font-size: 1.125em;
+}
+
+.intro {
+  margin-top: 5rem; /* Magic Number */
+  display: grid;
+  grid-template-areas:
+    "innoq avatar name"
+    "innoq avatar position";
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  justify-items: start;
+}
+
+.intro > a {
+  grid-area: innoq;
+}
+.intro > img {
+  grid-area: avatar;
+  border-radius: 50%;
+}
+.intro > small:nth-of-type(1) {
+  align-self: end;
+}
+.intro > small:nth-of-type(2) {
+  align-self: start;
+}
+
+pre {
+	-moz-tab-size: 4;
+	tab-size: 4;
+}
+
+.tip-wrapper {
+	width: min-content;
+	/* margin: auto; */
+}
+.tip-wrapper .symbol {
+	margin: 0;
+	line-height: 0;
+	text-align: left;
+}
+.tip-wrapper .symbol.ok {
+	color: var(--green-600);
+}
+.tip-wrapper .symbol.ko {
+	color: var(--red-600);
+}
+.reveal .tip-wrapper pre {
+	width: min-content;
+}
+
+.responsive-example {
+	font-size: 0.5em;
+}
+
+.flex-wrapper {
+	justify-content: center;
+	margin-bottom: 0;
+}

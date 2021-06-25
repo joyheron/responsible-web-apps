@@ -1,0 +1,1161 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="assets/reset.css">
+		<link rel="stylesheet" href="assets/reveal.css">
+		<link rel="stylesheet" href="assets/theme/custom-theme.css" id="theme">
+		<link rel="stylesheet" href="../responsive-examples.css">
+		<link rel="stylesheet" href="assets/theme/components.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="assets/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+				<section>
+					<h1>Responsible Web Applications</h1>
+
+					<footer class="intro">
+						<a href="https://innoq.com"><img src="../assets/innoq-logo--apricotpetrol.svg" alt="INNOQ" /></a>
+
+						<img class="avatar" src="https://joyheron.com/img/profile-medium.jpg" alt="Picture of Joy Heron" width="100" height="100">
+						<small><a href="https://joyheron.com">Joy Heron</a></small>
+						<small>Senior Consultant</small>
+					</footer>
+				</section>
+			</section>
+			<section class="responsive-web-design" data-background-color="#f1fbff">
+				<section>
+					<h2 id="Responsive-Web-Design">Responsive Web Design<a href="#Responsive-Web-Design" aria-label="Link to Responsive Web Design"></a></h2>
+
+					<aside class="notes">
+						<p>Do we really need responsive web design for our web application? We will only use our web application on desktop computers!</p>
+
+						<p>
+							I've heard this argument many times, but in the long term, it has never turned out to be true.
+							For this reason, I've created Joy's two laws of web development:
+						</p>
+					</aside>
+				</section>
+				<section>
+					<h3 id="Joy’s-First-Law-of-Web-Development">Joy’s First Law of Web Development<a href="#Joy’s-First-Law-of-Web-Development" aria-label="Link to Joy's First Law of Web Development"></a></h3>
+						<p>There is no such thing as a non-responsive web application</p>
+						<aside class="notes">
+							<p><em>Your web application WILL be opened in a mobile phone or tablet at some time in the future and your users WILL expect it to work correctly.</em></p>
+						</aside>
+				</section>
+				<section>
+					<h3 id="Joy’s-Second-Law-of-Web-Development">Joy’s Second Law of Web Development<a href="#Joy’s-Second-Law-of-Web-Development" aria-label="Link to Joy's Second Law of Web Development"></a></h3>
+					<p>Any work you do now to ensure that your web application behaves responsively WILL be appreciated in the future.</p>
+				</section>
+				<section>
+					<h3>Responsive</h3>
+					<div><strong>=</strong></div>
+					<div>Responsive Layout Containers</div>
+					<div>+</div>
+					<div>Squishy Components</div>
+
+					<aside class="notes">
+						<p>When it comes to the technical implementation of responsive design, there are two main categories of components that we need to develop</p>
+						<ul class="and-text">
+							<li>Responsive Layout Containers</li>
+							<li>Squishy Components</li>
+						</ul>
+						<p>We want to cover these two aspects in the next sections</p>
+					</aside>
+
+				</section>
+				<section class="subsubsection">
+					<h3 id="Responsive-Layout-Containers">Responsive Layout Containers<a href="#Responsive-Layout-Containers" aria-label="Link to Responsive Layout Containers"></a></h3>
+					<p>
+						We firstly need to make sure that we put a lot of thought into designing layout containers which adjust themselves based on the size of our viewport.
+					</p>
+				</section>
+				<section>
+					<h4>Explicit CSS Grid Layout with Breakpoints</h4>
+					<aside class="notes">
+						<p>
+							In the following demo, we can see how we can define a layout conceptually using different grid areas.
+						</p>
+						<p>
+							How can we implement this? To do this, I like to use the following technique.
+						</p>
+					</aside>
+					<figure>
+						<div class="horizontal-scroll responsive-example" aria-hidden="true">
+							<span class="caption">Mobile Devices</span>
+							<article class="layout-example" data-observe-resizes>
+								<header>
+									Header
+								</header>
+								<aside>
+									Sidebar
+								</aside>
+								<div class="main">
+									Main Content
+								</div>
+								<aside>
+									Second Sidebar
+								</aside>
+								<footer>
+									Footer
+								</footer>
+							</article>
+							<span class="caption">Tablet and up</span>
+							<article class="layout-example tabletUp">
+								<header>
+									Header
+								</header>
+								<aside class="squishy-text">
+									Sidebar
+								</aside>
+								<div class="main">
+									Main Content
+								</div>
+								<aside class="squishy-text">
+									Second Sidebar
+								</aside>
+								<footer>
+									Footer
+								</footer>
+							</article>
+							<footer class="caption tabletUp">Use the lower right corner to resize the layout and see it respond to change</footer>
+						</div>
+						<figcaption class="visually-hidden">
+							A UI example showing how content will be stacked vertically on smaller devices,
+							but on larger viewports we can then use the increased horizontal space to display
+							certain content areas next to each other.
+							<p class="visually-hidden">
+								The demo shows five content areas: Header, Sidebar, Main Content, Second Sidebar, and Footer.
+								On a mobile device, these areas are shown vertically stacked.
+								On larger viewports, the example layout now has three rows and three columns.
+								The Header area spans the full width of the top of the viewport in the first row.
+								In the middle row, the Sidebar, Main Content, and Second Sidebar areas are positioned
+								next to each other in a three column layout, with the Main Content area expanding
+								to take up as much space as it can. The Footer area then spans the full width of
+								the viewport in the bottom row of the layout.
+							</p>
+						</figcaption>
+					</figure>
+				</section>
+				<section>
+					<h4 id="CSS-Grid-with-Breakpoints">Explicit CSS Grid Layout with Breakpoints<a href="#CSS-Grid-with-Breakpoints" aria-label="Link to Explicit CSS Grid Layout with Breakpoints"></a></h4>
+
+					<h5>CSS for Mobile Devices</h5>
+
+<pre class="language-css" aria-label="CSS Code used to program the mobile layout Responsive Layout example"><code>.layout {
+	display: grid;
+	grid-template-areas:
+		"header"
+		"sidebar"
+		"main"
+		"sidebar-right"
+		"footer";
+	grid-template-rows: auto auto 1fr auto auto;
+}
+.layout > header {
+	grid-area: header;
+}
+.layout > aside:nth-of-type(1) {
+	grid-area: header;
+}
+.layout > main {
+	grid-area: main;
+}
+.layout > aside:nth-of-type(2) {
+	grid-area: header;
+}
+.layout > footer {
+	grid-area: footer;
+}
+</code></pre>
+
+					<aside class="notes">
+						<p>
+							Using CSS Grid, I like to use the following technique to declaratively define a default CSS grid for our content.
+							This is then the CSS which is used for smaller devices.
+						</p>
+						<p>
+							Note that this markup explicitly references the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main">
+							main</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header">
+							header</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer">
+							footer</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside">
+							aside</a> semantic HTML elements in the CSS code.
+							This was intentional here, because it forces us to then use the semantic HTML elements and add important landmarks to our web application which improves its accessibility.
+							With the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Child_combinator">child combinator</a> operator (<tt>></tt>) we ensure that this element targeted is the direct child of the parent with my layout class (which we would probably add directly to our HTML body).
+						</p>
+					</aside>
+				</section>
+				<section>
+					<h5 id="On-Tablets-or-larger-devices">CSS for tablets or larger devices</h5>
+
+<pre class="language-css" aria-label="CSS Code used to program the Responsive Layout example for larger devices"><code>@media (min-width: 40rem) { /* Tablet portrait up */
+	.layout {
+		grid-template-areas:
+			"header header header"
+			"sidebar main sidebar-right"
+			"footer footer footer";
+		grid-template-rows: auto 1fr auto;
+		grid-template-columns: 20% 1fr 20%;
+	}
+}
+</code></pre>
+
+<small>
+	<a href="https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/">
+		<svg width="1em" height="1em">
+			<use xlink:href="#link"></use>
+		</svg>
+		Correct way to do CSS breakpoints
+	</a>
+</small>
+
+					<aside class="notes">
+						<p>
+							Since we have already defined the <tt>grid-areas</tt> for our HTML elements, we can now declaratively change the layout using a relatively short CSS snippet within a media query:
+						</p>
+						<p>
+							Note that when you are defining your breakpoints for your application,
+							you should consider the <a href="https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/">correct way to do CSS breakpoints</a>.
+						</p>
+					</aside>
+					</section>
+					<section class="subsubsection">
+						<h3 id="Squishy-Components">Squishy Components<a href="#Squishy-Components" aria-label="Link to Squishy Components"></a></h3>
+
+						<aside class="notes">
+							<p>
+								After we have a responsive layout, the next step is to make sure that all of our components are "squishy".
+								This means that when we place a component into a designated area of a layout,
+								it should never push itself outside of its designated area.
+								Instead it should "squish" down to fit inside of the available space.
+							</p>
+							<p>
+								This is especially important because our layout container assumes that all of its
+								content is going to fit, and if this assumption is not true, this could cause the
+								whole layout to be wider than the viewport and make it necessary for the user to scroll
+								horizontally.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h4 id="Flexbox--Flex-Wrap">Flexbox + Flex Wrap<a href="#Flexbox--Flex-Wrap" aria-label="Link to Flexbox + Flex Wrap"></a></h4>
+
+<pre class="language-css" aria-label="CSS Code used to create wrapping within a flexbox container"><code>.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+</code></pre>
+
+						<aside class="notes">
+							<p>
+								We can use the <tt>display: flex;</tt> rule to make the container
+								a <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">flexbox</a> and
+								then use the <tt>flex-wrap: wrap;</tt> rule to wrap content within the flexbox.
+							</p>
+							<p>
+								When there is not enough space for the items to be placed horizontally,
+								they will begin to wrap and be shown stacked vertically instead.
+							</p>
+						</aside>
+
+						<figure>
+							<div class="horizontal-scroll responsive-example" aria-hidden="true">
+								<span class="caption">Mobile Devices</span>
+								<article class="flexbox-example highlight-flex">
+									<div>
+										<h5>Placeholder Title</h5>
+										<p>A description of an item</p>
+									</div>
+									<div class="inner-flex">
+										<span>
+											Price
+										</span>
+										<span>
+											Time
+										</span>
+										<span>
+											Amount
+										</span>
+									</div>
+								</article>
+								<span class="caption">Tablet and up</span>
+								<article class="flexbox-example highlight-flex">
+									<div>
+										<h5>Placeholder Title</h5>
+										<p>A description of an item</p>
+									</div>
+									<div class="inner-flex">
+										<span>
+											Price
+										</span>
+										<span>
+											Time
+										</span>
+										<span>
+											Amount
+										</span>
+									</div>
+								</article>
+								<footer class="caption tabletUp">Use the lower right corner to resize the flexbox and see it respond to change</footer>
+							</div>
+							<figcaption class="visually-hidden">
+								An example showing how we can use <code>flex-wrap</code> to wrap content in a flexbox.
+								<p>
+									The demo shows a flexbox containing two blocks: a block containing a title and a description,
+									and a block containing a price, time, and amount.
+									On a larger devices, these block can be positioned next to each other horizontally.
+									On smaller devices with flex-wrap activated, the second block containing the price, time and amount
+									will wrap onto the next line and be positioned underneath the first block.
+								</p>
+							</figcaption>
+					</figure>
+					</section>
+					<section>
+						<h4 id="Nested-Flexboxes">Nested Flexboxes<a href="#Nested-Flexboxes" aria-label="Link to Nested Flexboxes"></a></h4>
+						<aside class="notes">
+							<p>
+								It is also possible to nest flexboxes inside each other to create more advanced responsive behavior.
+								This next example shows the same flex container from our last example, but highlights the
+								inner flexbox instead of the outer flexbox.
+							</p>
+						</aside>
+
+						<figure>
+							<div class="horizontal-scroll responsive-example" aria-hidden="true">
+								<article class="flexbox-example">
+									<div>
+										<h5>Placeholder Title</h5>
+										<p>A description of an item</p>
+									</div>
+									<div class="inner-flex highlight-flex">
+										<span>
+											Price
+										</span>
+										<span>
+											Time
+										</span>
+										<span>
+											Amount
+										</span>
+									</div>
+								</article>
+								<footer class="caption tabletUp">Use the lower right corner to resize the flexbox and see it respond to change</footer>
+							</div>
+							<figcaption class="visually-hidden">
+								An example highlighting the items in the inner flexbox that can also wrap.
+								<p>
+									The demo shows the same demo as the one in the previous example, but in this instance,
+									the price, time, and amount items are highlighted because they are also contained within
+									an inner flexbox. This adds an extra layer to the responsiveness: when the viewport gets
+									so small that there is no longer space for these three items to be positioned next to each
+									other horizontally, they will begin to wrap as well.
+								</p>
+							</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h4 id="Intrinsic-Grid">Intrinsic Grid<a href="#Intrinsic-Grid" aria-label="Link to Intrinsic Grid"></a></h4>
+<pre class="language-css" aria-label="CSS Code for creating an intrinsic CSS Grid"><code>.container {
+	display: grid;
+	grid-template-columns:
+		repeat(auto-fill, minmax(var(—col-width), auto));
+}
+</code></pre>
+						<aside class="notes">
+							<p>
+								We can use the CSS <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">repeat</a> function
+								with <tt>grid-template-columns</tt> in order to create an intrinsic grid which will generate as
+								many columns as fit in the given space. An example using this type of grid is available in
+								<a href="https://github.com/innoq/livecoding-css-layout">my demo for live-coding css layout</a>.
+							</p>
+						</aside>
+
+						<figure>
+							<div class="horizontal-scroll responsive-example" aria-hidden="true">
+								<span class="caption">Mobile Devices</span>
+								<article class="intrinsic-grid-example">
+									<div>Element 1</div>
+									<div>Element 2</div>
+									<div>Element 3</div>
+									<div>Element 4</div>
+									<div>Element 5</div>
+									<div>Element 6</div>
+								</article>
+								<span class="caption">Tablet and up</span>
+								<article class="intrinsic-grid-example">
+									<div>Element 1</div>
+									<div>Element 2</div>
+									<div>Element 3</div>
+									<div>Element 4</div>
+									<div>Element 5</div>
+									<div>Element 6</div>
+								</article>
+								<footer class="caption tabletUp">Use the lower right corner to resize the grid and see it respond to change</footer>
+							</div>
+							<figcaption class="visually-hidden">
+								An example of an intrinsic grid which fits as many columns as possible within the viewport.
+
+								<p>
+									The demo shows a grid with 6 different content blocks that are positioned within an intrinsic CSS grid.
+									On mobile devices, there is only enough space for a single column, so the blocks are all positioned within
+									this column. When there is enough space for two columns, the layout will shift and the elements will be
+									positioned within the grid in two columns and end up filling three rows.
+									When there is enough space for three columns,
+									the layout will shift again and the elements will be positioned within the grid in three columns and will
+									end up filling two rows. This layout pattern will continue, and a grid will always be generated with
+									as many columns as fit within the viewport size.
+								</p>
+							</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h4 id="Horizonal-Scrolling">Horizontal Scrolling<a href="#Horizontal-Scrolling" aria-label="Link to Horizontal Scrolling"></a></h4>
+
+<pre class="language-css" aria-label="CSS Code for creating a container for larger elements that can be scrolled horizontally"><code>.horizontal-scroll {
+	overflow-x: auto;
+}
+</code></pre>
+
+						<aside class="notes">
+							<p>
+								When we talk about creating an application which is responsive, this doesn't mean that we need to optimize
+								all of our layouts for small device screens. In certain contexts, we will have larger data representations
+								(e.g. tables or code examples), which we also want to be available for smaller devices even if they are not
+								optimized for that layout.
+							</p>
+							<p>
+								For this, I like to use a wrapper around tables and code examples which make them able to be scrolled horizontally
+								when there is not enough space for them in the current layout.
+							</p>
+						</aside>
+
+						<figure>
+							<div class="horizontal-scroll responsive-example" aria-hidden="true">
+								<article class="example-table">
+									<table>
+										<thead>
+											<tr>
+												<th>A</th>
+												<th>B</th>
+												<th>C</th>
+												<th>D</th>
+												<th>E</th>
+												<th>F</th>
+												<th>G</th>
+												<th>H</th>
+												<th>I</th>
+												<th>J</th>
+												<th>K</th>
+												<th>L</th>
+												<th>M</th>
+												<th>N</th>
+												<th>O</th>
+												<th>P</th>
+												<th>Q</th>
+												<th>R</th>
+												<th>S</th>
+												<th>T</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+												<td>-</td>
+											</tr>
+										</tbody>
+									</table>
+								</article>
+								<footer class="caption">Scroll horizontally to see the whole table</footer>
+								<footer class="caption tabletUp">Use the lower right corner to resize the table and see it respond to change</footer>
+							</div>
+							<figcaption class="visually-hidden">
+								An example showing how to use a container with horizontal scrolling to make larger
+								content available on smaller viewports.
+								<p>
+									In the example, a large table with twenty columns is shown. On smaller devices, there is
+									not enough space for the whole table to be shown. In this case, the large table is shown
+									within a container that fits within the viewport, and the user can scroll within that
+									container in order to view all of the contents.
+								</p>
+							</figcaption>
+						</figure>
+					</section>
+					<section>
+					<h4 id="Squishy-Text">Squishy Text<a href="#Squishy-Text" aria-label="Link to Squishy Text"></a></h4>
+
+<pre class="language-css" aria-label="CSS Code for activating word wrapping in different browsers"><code>.squishy-text {
+	word-break: break-word; /* Samsung browser */
+	word-wrap: break-word; /* IE 11 */
+	overflow-wrap: anywhere;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+</code></pre>
+
+					<aside class="notes">
+						<p>
+							The following example is a CSS meme now.
+							By default, long words in an HTML document will not be hyphenated by default,
+							so they will break out of their containing box instead of squishing to fit inside of it.
+							This is especially important when we are dealing with a language which has a lot of long words
+							(<em>*cough* German *cough*</em>).
+						</p>
+						<p>
+							The previous CSS snippet is one I have successfully used to make my text squishy in different contexts.
+						</p>
+					</aside>
+
+					<div class="flex-wrapper" lang="en">
+						<div class="box-example" aria-label="Example showing the word 'Awesome' poking out of its containing box">
+								CSS is awesome
+						</div>
+						<div class="box-example squishy-text" aria-label="Example showing the word 'Awesome' wrapping to fit inside of its containing box">
+								CSS is awesome
+						</div>
+					</div>
+					</section>
+				</section>
+				<section class="accessible-web-design" data-background-color="#FFFAF0">
+					<section>
+						<h2 id="Accessible-Web-Design">Accessible Web Design<a href="#Accessible-Web-Design" aria-label="Link to Accessible Web Design"></a></h2>
+						<aside class="notes">
+							<p>
+								We now come to accessibility.
+								Here I feel that I can only scratch the surface of the different things that we should consider.
+								I also am learning new things all the time, so I'm sure that this list is not exhaustive.
+								But I do think it is a good starting off point.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h3 id="Headings">Headings<a href="#Headings" aria-label="Link to Headings"></a></h3>
+						<p>Don’t skip heading levels.</p>
+
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+<p class="symbol ok">
+	<svg width="1em" height="1em" aria-hidden="true">
+		<use xlink:href="#check-circle"></use>
+	</svg>
+	<span class="visually-hidden">The following HTML is correct</span>
+</p>
+<pre class="language-html" aria-label="HTML with correct headings that don't skip any heading levels"><code><h1>Heading Level 1</h1>
+<h2>Heading Level 2</h2>
+<p>...</p>
+<h3>Heading Level 3</h3>
+<p>...</p>
+<h3>Heading Level 3</h3>
+</code></pre>
+</div>
+
+<div class="tip-wrapper">
+<p class="symbol ko">
+	<svg width="1em" height="1em" aria-hidden="true">
+		<use xlink:href="#times-circle"></use>
+	</svg>
+	<span class="visually-hidden">The following HTML is incorrect</span>
+</p>
+<pre class="language-html" aria-label="HTML which incorrectly skips heading levels"><code><h3>Heading Level 3</h3>
+<p>...</p>
+<h3>Heading Level 3</h3>
+<h1>Heading Level 1</h1>
+<h5>Heading Level 5</h5>
+</code></pre>
+</div>
+</div>
+
+						<p>Do <em>NOT</em> choose heading based on visual size.</p>
+						<aside class="notes">
+							<p>
+								In your HTML Document, you need to ensure that your document hierarchy is complete and doesn't skip levels.
+								Otherwise, users who depend on assistive technologies will get confused because it will seem like content is
+								missing.
+							</p>
+							<p>
+								This is a mistake that many developers make,
+								because we pay attention to how the heading appears visually without making sure that an <tt>h2</tt> is always
+								directly followed by a <tt>h3</tt>.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h3 id="Landmarks">Landmarks<a href="#Landmarks" aria-label="Link to Landmarks"></a></h3>
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+<p class="symbol ok">
+	<svg width="1em" height="1em" aria-hidden="true">
+		<use xlink:href="#check-circle"></use>
+	</svg>
+	<span class="visually-hidden">The following HTML is uses landmarks correctly</span>
+</p>
+<pre class="language-html" aria-label="HTML example showing correct usage of header, main, aside, and footer"><code>&lt;body&gt;
+	<header>Header Area</header>
+	<main>Main Area</main>
+	<aside>Supplemental Content</aside>
+	<footer>Footer Area</footer>
+&lt;/body&gt;
+</code></pre>
+</div>
+</div>
+
+						<p>Use elements like <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main">main</a> and
+						<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header">header</a> to get
+						<a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques#Landmark_roles">landmarks</a> out of the box.</p>
+						<aside class="notes">
+							<p>
+								Note that the <tt>main</tt> element is not well supported for IE11, so if you have to
+								support older browsers, you should also consider using <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Main_role#Skip_navigation">skip links</a>.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h3 id="nav-element">nav Element<a href="#nav-element" aria-label="Link to nav Element"></a></h3>
+						<p>
+							Wrap navigational links in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav">nav</a>
+						</p>
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+<p class="symbol ok">
+	<svg width="1em" height="1em" aria-hidden="true">
+		<use xlink:href="#check-circle"></use>
+	</svg>
+	<span class="visually-hidden">The following HTML is uses the nav element correctly</span>
+</p>
+<pre class="language-html" aria-label="HTML nav element wrapping three links"><code><nav>
+	<a href="#">Link 1</a>
+	<a href="#">Link 2</a>
+	<a href="#">Link 3</a>
+</nav>
+</code></pre>
+</div>
+
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses the nav element correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML nav element wrapping three links inside a list"><code><nav>
+	<ul>
+		<li><a href="#">Link 1</a></li>
+		<li><a href="#">Link 2</a></li>
+		<li><a href="#">Link 3</a></li>
+	</ul>
+</nav>
+</code></pre>
+	<small>Additionally wrap links in a list for more context</small>
+</div>
+</div>
+					</section>
+					<section>
+						<h3 id="label-element">label Element<a href="#label-element" aria-label="Link to label Element"></a></h3>
+						<p>
+							<em>Always</em> correctly add <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">labels</a> to
+							input fields!
+						</p>
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses the label element correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to specify a label for an input element"><code>&lt;label for="name"&gt;
+	First Name
+&lt;/label&gt;
+&lt;input id="name"
+	type="text"
+	value="name"
+	placeholder="Jane Smith"&gt;
+</code></pre>
+</div>
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses the label element correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to use a label element to wrap around an input field."><code>&lt;label&gt;
+	First Name
+	&lt;input type="text"
+		value="name"
+		placeholder="Jane Smith"&gt;
+&lt;/label&gt;
+</code></pre>
+</div>
+</div>
+
+						<aside class="notes">
+							<p>
+								Here we either wrap the input field directly in the label,
+								or we can use the <tt>for</tt> attribute and link it to a specific input field.
+							</p>
+							<p>
+								Here it is important to not use the <tt>placeholder</tt> attribute to label the input field.
+								The placeholder attribute should be used to show an example of how the data we expect should appear.
+								This is particularly important for users who have congnitive disabilities, because when the instructions
+								in the placeholder disappear, they may not remember what they were supposed to enter into the field.
+								Please also read <a href="https://adamsilver.io/articles/placeholders-are-problematic/">this article about why placeholder are problematic.</a>
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h3 id="list-elements">List Elements<a href="#list-elements" aria-label="Link to List Elements"></a></h3>
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses the an unordered list element correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to define an unordered list"><code><ul>
+	<li>...</li>
+	<li>...</li>
+	<li>...</li>
+</ul></code></pre>
+</div>
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses an ordered list element correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to define an ordered list."><code><ol>
+	<li>...</li>
+	<li>...</li>
+	<li>...</li>
+</ol>
+</code></pre>
+</div>
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses a description list element correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to define a definition list."><code><dl>
+	<dt>Term 1</dt>
+	<dd>...</dd>
+	<dt>Term 2</dt>
+	<dd>...</dd>
+	<dt>Term 3</dt>
+	<dd>...</dd>
+</dl>
+</code></pre>
+</div>
+</div>
+
+						<aside class="notes">
+							<p>
+								Using lists (an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">unordered list</a>,
+								an <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol">ordered list</a>, or a
+								<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl">description list</a>) for things in a UI will also add extra context for assistive technologies.
+								For instance, it will tell assistive technologies how many elements are contained in a list.
+							</p>
+							<p>
+								In practice, description lists can be difficult to style because we are not allowed to add an extra <tt>div</tt> as a wrapper around the <tt>dt</tt> and <tt>dd</tt> elements.
+								For this reason, I've also done <a href="https://joyheron.com/a11y-playground/represent-labelled-information.html" target="_blank">some experiments about how to best group information in the UI</a>.
+								Here there isn't a single correct solution.
+								You will have to find out what works best for your UI.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h3>Use buttons for interactive elements <em>which do not navigate anywhere</em></h3>
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses a button correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to define an button"><code>&lt;button&gt;Click me!&lt;/button&gt;
+</code></pre>
+</div>
+<div class="tip-wrapper">
+	<p class="symbol ko">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#times-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is not a semantically correct button</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to incorrectly define a button."><code><div role="button">Click me!</div>
+</code></pre>
+</div>
+</div>
+
+						<p>
+							Adding ARIA only tells assistive technology that it <em>should</em> be a button.
+							It doesn't actually implement button behavior.
+						</p>
+					</section>
+					<section>
+						<h3>Use <em>anchors</em> for interactive elements which navigate somewhere</h3>
+
+<div class="flex-wrapper" style="flex-wrap: wrap;">
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses an anchor element correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to define an button"><code>&lt;a href="..." &gt;Go here!&lt;/a&gt;</code></pre>
+</div>
+<div class="tip-wrapper">
+	<p class="symbol ko">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#times-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is not a semantically correct anchor</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to incorrectly define a button."><code><div role="button">Go here!</div></code></pre>
+</div>
+<div class="tip-wrapper">
+	<p class="symbol ko">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#times-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is not a semantically correct anchor</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code showing how to incorrectly define a button."><code>&lt;button&gt;Go here!&lt;/button&gt;</code></pre>
+<small>Buttons should not be used to navigate!</small>
+</div>
+</div>
+
+					</section>
+					<section>
+						<h3 id="accordions">Collapsing/Expanding Content</h3>
+
+						<p>
+							For >IE11 use <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details">details</a> element.
+						</p>
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML is uses a details element correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code example using a details element"><code>&lt;details&gt;
+	&lt;summary&gt;Toggle Button&lt;/summary&gt;
+	Content which will be expanded/collapsed
+	when clicking the summary element
+&lt;/details&gt;
+</code></pre>
+</div>
+</div>
+
+<details>
+	<summary>Toggle Button</summary>
+	Content which will be expanded/collapsed when clicking the summary element
+</details>
+
+					</section>
+					<section>
+						<h3>Collapsing/Expanding Content</h3>
+						<aside class="notes">
+							<p>
+								We can also implement this in JavaScript using a <tt>button</tt> and the
+								<tt>aria-expanded</tt> attribute.
+								The <tt>aria-expanded</tt> attribute adds context information to the <em>button</em> which will tell the screenreader
+								if the area that the button is toggling is currently collapsed or expanded.
+							</p>
+							<p>
+								I have seen incorrect implementations of this where the developer thought that the attribute was intended to be added to
+								the content block which is expanded or collapsed, but this is not the case and that implementation would be confusing to any user of an assistive technology.
+								If we do spend the effort to set aria roles in our application (which we should),
+								we need to test our application and make sure they are used correctly!
+								No aria usage is better than incorrect aria usage.
+							</p>
+							<p>
+								I have implemented this behavior many times, and when I do, I prefer to use a custom element and activate
+								the toggle with <a href="https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement">progressive enhancement</a>.
+								This means that my toggle button is hidden by default before JavaScript is activated, and the content area that is to be collapsed/expanded
+								will only be hidden once JavaScript is activated.
+							</p>
+							<p>
+								The contract for the <tt>toggle-button</tt> component that I usually end up writing therefore usually looks something like this:
+							</p>
+						</aside>
+
+<pre class="language-html" aria-label="HTML code showing the contract for the toggle-button component"><code>&lt;button is="toggle-button" data-target="#section2"
+		aria-expanded="false" hidden&gt;Toggle Section 2&lt;/button&gt;
+</code></pre>
+
+						<p><em>aria-expanded</em> is an attribute of the <strong>BUTTON</strong> telling assistive technologies if the content area is currently visible or not.</p>
+					</section>
+					<section>
+						<p>
+							Again: <b>aria-expanded</b> only tells assistive technology that it <em>should</em> collapse content.
+						</p>
+						<p>You need JavaScript to add the actual functionality.</p>
+
+<pre class="language-js" aria-label="JavaScript Code showing an implementation of a toggle button custom element"><code>class ToggleButton extends HTMLButtonElement {
+	connectedCallback () {
+		this.removeAttribute("hidden");
+		if (this.getAttribute("aria-expanded") !== "true") {
+			this.setAttribute("aria-expanded", "false");
+			this.target.classList.add("hide");
+		}
+		this.addEventListener("click", this.toggle.bind(this));
+	}
+
+	toggle () {
+		let classList = this.target.classList;
+		if (classList.contains("hide")) {
+			classList.remove("hide");
+			this.setAttribute("aria-expanded", "true");
+		} else {
+			classList.add("hide");
+			this.setAttribute("aria-expanded", "false");
+		}
+	}
+
+	get target () {
+		return document.querySelector(this.getAttribute("data-target"));
+	}
+}
+customElements.define("toggle-button", ToggleButton, { extends: "button" });
+</code></pre>
+					</section>
+					<section>
+						<iframe src="https://joyheron.com/a11y-playground/collapser.html" width="800" height="600" aria-hidden="true"></iframe>
+						<div>
+							<small><a href="https://joyheron.com/a11y-playground/collapser.html">Link to Demo</a></small>
+						</div>
+					</section>
+					<section>
+						<h3 id="aria-label-and-aria-labelledby">aria-label and aria-labelledby<a href="#aria-label-and-aria-labelledby" aria-label="Link to aria-label and aria-labelledby"></a></h3>
+						<p>Add textual descriptions of an element</p>
+
+						<aside class="notes">
+							<p>
+								Sometimes we have visual elements which add information to the UI,
+								but are missing in the UI. For these cases, we can use
+								an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">aria-label</a> attribute
+								with a textual description of what the visual element is showing. If there is already a UI
+								element available, we can also use <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-labelledby_attribute">aria-labelledby</a> and reference the HTML id of
+								the existing element.
+								The HTML <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title">title</a>
+								element is not well supported by assistive technologies, so it should not be used to do this.
+							</p>
+							<p>
+								Here it really helps to test your UI in a screenreader so that you can figure out where
+								extra labels would be helpful <span aria-label="winking emoji">😉</span>.
+							</p>
+						</aside>
+
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML uses aria-label correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code example using aria-label"><code>&lt;table
+	aria-label="Label for table"&gt;
+...
+&lt;/table&gt;
+</code></pre>
+</div>
+<div class="tip-wrapper">
+	<p class="symbol ok">
+		<svg width="1em" height="1em" aria-hidden="true">
+			<use xlink:href="#check-circle"></use>
+		</svg>
+		<span class="visually-hidden">The following HTML uses aria-label correctly</span>
+	</p>
+<pre class="language-html" aria-label="HTML Code example using aria-labelledby"><code>&lt;span id="info"&gt;
+	Label for table
+&lt;span&gt;
+&lt;table aria-labelledby="info"&gt;
+...
+&lt;/table&gt;
+</code></pre>
+</div>
+</div>
+
+					</section>
+					<section>
+						<h3 id="Hiding-content-visually">Hiding content visually (but not from screenreaders)<a href="#Hiding-content-visually" aria-label="Link to hiding content visually"></a></h3>
+
+<pre class="language-css" aria-label="CSS Code snippet to hide HTML visually"><code>.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+</code></pre>
+
+						<aside class="notes">
+							<p>
+								Sometimes we want to hide elements from our UI.
+								If we use a CSS rule like <tt>display: none;</tt>
+								this not only hides the element visually,
+								but also hides it from assistive technologies.
+								We can use the previous CSS snippet (or one like it),
+								to hide the content visually without removing it from
+								the accessibility tree.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h3 id="Hiding-content-from-assistive-technologies">Hiding content from assistive technologies<a href="#Hiding-content-from-assistive-technologies" aria-label="Link to Hiding Content from Assistive Technologies"></a></h3>
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+<pre class="language-html" aria-label="HTML Code example using aria-label"><code>&lt;svg aria-hidden="true"&gt;
+	This icon is only decorative
+&lt;svg&gt;
+</code></pre>
+</div>
+</div>
+
+						<aside class="notes">
+
+						</aside>
+					</section>
+					<section>
+						<h3 id="Image-Alt">Descriptive alt text for images<a href="#Image-Alt" aria-label="Link to Descriptive alt text for images"></a></h3>
+
+<div class="flex-wrapper">
+<div class="tip-wrapper">
+	<pre class="language-html" aria-label="HTML Code example using aria-label"><code>&lt;img src="..." alt="A duck looking sad"&gt;</code></pre>
+</div>
+</div>
+
+						<p>
+							An alt-text should provide the same information conveyed visually.
+						</p>
+						<a href="https://axesslab.com/alt-texts/">Alt-texts guide</a>
+
+					</section>
+					<section>
+						<h3 id="Styling-Focus">Adding clear focus styles<a href="#Styling-Focus" aria-label="Link to Adding clear focus styles"></a></h3>
+						<p>Never add remove focus styles without providing a good alternative.</p>
+						<aside class="notes">
+							<p>
+								By default, the browser will add focus styles to the UI to indicate to users which element on the
+								screen is currently active. This is especially important for keyboard users, who need the focus styles
+								in order to correctly navigate throughout your page.
+							</p>
+							<p>
+								If you find the default focus styles irritating in your design, you can customize them with the
+								<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus">:focus</a> CSS pseudo-selector.
+								However, here it is very important that <strong>you still provide a focus style which has a high
+									contrast and is easily identifiable</strong> within the UI.
+							</p>
+						</aside>
+					</section>
+					<section>
+						<h3 id="Setting-focus-correctly">Setting focus correctly<a href="#Setting-focus-correctly" aria-label="Link to setting focus correctly"></a></h3>
+						<p>If we dynamically add content, we need to think about the focus and move it as necessary</p>
+						<iframe src="https://joyheron.com/a11y-playground/show-more-pagination.html" width="800" height="450"></iframe>
+						<aside class="notes">
+							<p>
+								As long as you are writing only HTML and CSS,
+								there isn't any good reason why you would want to mess with the <tt>focus</tt> within your webpage,
+								because the semantics and structure of HTML is very well designed.
+								However, when we begin to modify the HTML of our application with client-side JavaScript,
+								we need to think about the focus and if we need to update it as well.
+							</p>
+							<p>
+								For instance, if we are adding content to our DOM with JavaScript,
+								as I did with this
+								<a href="https://joyheron.com/a11y-playground/show-more-pagination.html" target="_blank">“Show More” Pagination Example</a>,
+								we should consider whether we should move the focus to the new content after it has loaded.
+							</p>
+							<p>
+								In this case, we need to <strong>make absolutely sure</strong> that you
+								<strong>test the application with a screenreader and keyboard</strong>
+								to ensure that the focus is set correctly.
+								There is little that can break your UI more than incorrectly setting the focus.
+							</p>
+						</aside>
+					</section>
+				</section>
+			</section>
+			<section>
+				<section>
+					<p>Thank you very much!</p>
+					<p>Any questions?</p>
+					<a href="https://responsibleweb.app">https://responsibleweb.app</a>
+				</section>
+			</section>
+			</div>
+		</div>
+
+		<svg class="svg-definitions" hidden="">
+			<defs>
+				<symbol id="link" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="link" class="svg-inline--fa fa-link fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path></symbol>
+				<symbol id="check-circle" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle" class="svg-inline--fa fa-check-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path></symbol>
+				<symbol id="times-circle" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" class="svg-inline--fa fa-times-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"></path></symbol>
+			</defs>
+		</svg>
+
+		<script src="assets/reveal.js"></script>
+		<script src="../resize-observer.js"></script>
+		<script src="assets/highlight.js"></script>
+		<script>
+			document.body.classList.add('js');
+		</script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				plugins: [RevealHighlight]
+			});
+		</script>
+	</body>
+</html>
