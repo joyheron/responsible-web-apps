@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Responsible Web Apps</title>
 
 		<link rel="stylesheet" href="assets/reset.css">
 		<link rel="stylesheet" href="assets/reveal.css">
@@ -77,7 +77,7 @@
 							</div>
 							<figcaption>Cost of creating a responsive, accessible app</figcaption>
 						</figure>
-						<figure class="cost-analysis">
+						<figure class="cost-analysis fragment">
 							<div class="testing">
 								<div aria-hidden="true"><span>💰</span><span>💰</span></div>
 								<span>
@@ -601,11 +601,53 @@
 						</div>
 					</div>
 					</section>
+					<section>
+						<h4>Container Queries</h4>
+						<em>‼️ Coming soon to a browser near you ‼️ <small>⚠️ Currently only available in Chrome canary</small></em>
+
+						<figure>
+							<div class="horizontal-scroll responsive-example" aria-hidden="true">
+								<article class="example-container-queries">
+									<div class="card">
+										<h2>Heading</h2>
+										<div class="image-container">
+											<img src="assets/images/accessible-mascot.svg" alt="Image of Screenreader Mascot">
+										</div>
+										<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore...</p>
+									</div>
+								</article>
+								<footer class="caption">Scroll horizontally to see the whole container</footer>
+								<footer class="caption tabletUp">Use the lower right corner to resize the container and see it respond to change</footer>
+							</div>
+							<figcaption class="visually-hidden">
+								An example showing how to use container queries.
+								<p>
+									In the example, on small devices, the image is shown above the heading and text.
+								</p>
+							</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h2>CSS for Container Queries</h2>
+<pre class="language-css" aria-label="CSS Code for defining Container Queries"><code>.container {
+  contain: layout style inline-size;
+}
+.card {
+	/* Default Styles */
+}
+@container (min-width: 30rem) {
+	/* Styles for larger contexts */
+}
+@container (min-width: 50rem) {
+	/* Styles for even larger contexts */
+}
+</code></pre>
+					</section>
 				</section>
 				<section class="accessible-web-design" data-background-color="#FFFAF0">
 					<section data-state="first-slide">
 						<h2 id="Accessible-Web-Design">Accessible Web Design<a href="#Accessible-Web-Design" aria-label="Link to Accessible Web Design"></a></h2>
-						<img class="mascot centered" src="assets/images/accessible-mascot.svg" style="--mascot-top: 8em; --mascot-width: 6em;">
+						<img class="mascot centered" src="assets/images/accessible-mascot.svg" style="--mascot-top: 8em; --mascot-width: 6em;" alt="">
 
 						<aside class="notes">
 							<p>
@@ -1192,7 +1234,6 @@ customElements.define("toggle-button", ToggleButton, { extends: "button" });
 					<a href="https://responsibleweb.app">https://responsibleweb.app</a>
 					<img class="mascot" src="assets/images/responsive-mascot.svg" style="--mascot-left: 1.5em; --mascot-top: 8em;">
 					<img class="mascot" src="assets/images/accessible-mascot.svg" style="--mascot-right: 0em; --mascot-top: 8em; --mascot-width: 4em;">
-
 				</section>
 			</section>
 			</div>

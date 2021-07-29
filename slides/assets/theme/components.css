@@ -245,7 +245,7 @@ div.accessible-web-design {
 .developing {
 	display: grid;
 	padding: var(--spacer-sm);
-	justify-content: center;
+	justify-items: center;
 	background-color: var(--green-100);
 	border: 3px dashed var(--green-300);
 }
@@ -253,7 +253,7 @@ div.accessible-web-design {
 .redeveloping {
 	display: grid;
 	padding: var(--spacer-sm);
-	justify-content: center;
+	justify-items: center;
 	background-color: var(--blue-100);
 	border: 3px dashed var(--blue-300);
 	margin-bottom: -3px;

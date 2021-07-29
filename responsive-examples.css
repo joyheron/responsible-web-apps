@@ -207,3 +207,56 @@
 	-ms-hyphens: auto;
 	hyphens: auto;
 }
+
+.example-container-queries {
+	contain: style layout inline-size;
+}
+.example-container-queries .card {
+	background-color: white;
+	font-size: 0.8em;
+	display: grid;
+	grid-template-areas: "picture" "heading" "text";
+}
+.example-container-queries .image-container {
+	display: grid;
+	background-color: var(--purple-100);
+	place-items: center;
+	grid-area: picture;
+}
+.example-container-queries h2 {
+	grid-area: heading;
+	padding: 0 1rem;
+}
+.example-container-queries p {
+	grid-area: text;
+	padding: 0 1rem;
+}
+.example-container-queries .image-container img {
+	width: 60%;
+}
+@container (min-width: 25rem) {
+	.example-container-queries .card {
+		grid-template-areas: "picture heading" "picture text";
+	}
+
+	.example-container-queries .image-container {
+		aspect-ratio: 1 / 1;
+		background-color: var(--indigo-100);
+	}
+
+	.example-container-queries h2 {
+		margin: 0;
+		align-self: end;
+	}
+}
+@container (min-width: 50rem) {
+	.example-container-queries .card {
+		grid-template-areas: "heading picture" "text picture";
+		background-color: var(--pink-100);
+	}
+
+	.example-container-queries .image-container {
+		aspect-ratio: 1 / 1;
+		background-color: white;
+	}
+}
