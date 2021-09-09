@@ -335,7 +335,7 @@ toggle-button [aria-expanded="true"] svg {
 .hide {
 	display: none;
 }
-@media (min-width: 68rem) {
+@media screen and (min-width: 68rem) {
 	toggle-button button {
 		display: none;
 	}
