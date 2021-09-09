@@ -132,7 +132,7 @@
 					</aside>
 
 				</section>
-				<section class="subsubsection">
+				<section>
 					<h3 id="Responsive-Layout-Containers">Responsive Layout Containers<a href="#Responsive-Layout-Containers" aria-label="Link to Responsive Layout Containers"></a></h3>
 					<p>
 						We firstly need to make sure that we put a lot of thought into designing layout containers which adjust themselves based on the size of our viewport.
@@ -653,6 +653,26 @@
 }
 </code></pre>
 					</section>
+					<section>
+						<h2>CSS for targeting types of devices</h2>
+<div class="flex-wrapper">
+<div>
+<pre class="language-css" aria-label="Use hover media query to check if hover is available"><code>@media (hover: none) {
+	...
+}
+</code></pre>
+<p>Target devices without hover</p>
+</div>
+<div>
+<pre class="language-css" aria-label="Use hover media query to check if hover is available"><code>@media (pointer: coarse) {
+	...
+}
+</code></pre>
+<p>Target devices with a pointed device of limited accuracy (e.g. a finger)</p>
+</div>
+</div>
+
+					</section>
 				</section>
 				<section class="accessible-web-design" data-background-color="#FFFAF0">
 					<section data-state="first-slide">
@@ -942,6 +962,14 @@
 							Adding ARIA only tells assistive technology that it <em>should</em> be a button.
 							It doesn't actually implement button behavior.
 						</p>
+					</section>
+					<section>
+						<h3><a href="https://www.w3.org/TR/using-aria/#firstrule">First Rule of Aria</a></h3>
+						<blockquote>
+							If you can use a native HTML element or attribute with the semantics and behavior
+							you require <strong>already built in</strong>, instead of re-purposing an element and adding an
+							ARIA role, state or property to make it accessible, <strong>then do so.</strong>
+						</blockquote>
 					</section>
 					<section>
 						<h3>Use <em>anchors</em> for interactive elements which navigate somewhere</h3>
@@ -1234,6 +1262,25 @@ customElements.define("toggle-button", ToggleButton, { extends: "button" });
 								There is little that can break your UI more than incorrectly setting the focus.
 							</p>
 						</aside>
+					</section>
+					<section>
+						<h3>ARIA live regions</h3>
+						Inform assistive technologies of dynamic changes to the content by add notifications
+						to a region with an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">
+							<code>aria-live</code>
+						</a> attribute.
+
+<div class="flex-wrapper">
+	<div class="tip-wrapper">
+<pre class="language-html" aria-label="HTML Code example using aria-label"><code>&lt;div role="status" aria-live="polite">
+	An informative message
+&lt;/div></code></pre>
+	</div>
+</div>
+
+					<p>
+						Incorporate these messages into your visual design to improve usability for all users!
+					</p>
 					</section>
 				</section>
 			</section>

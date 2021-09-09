@@ -148,6 +148,12 @@ pre {
 .flex-wrapper {
 	justify-content: center;
 	margin-bottom: 0;
+	gap: var(--spacer-sm);
+}
+
+.flex-wrapper pre {
+	margin: 0;
+	width: 100%;
 }
 
 .reveal .mascot {
