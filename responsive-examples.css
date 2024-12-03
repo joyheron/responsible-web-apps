@@ -13,8 +13,8 @@
 }
 .responsive-example .caption {
 	font-style: italic;
-	font-size: 0.875rem;
-	color: var(--gray-600);
+	font-size: 0.9em;
+	color: var(--gray-700);
 	margin-bottom: 0;
 }
 .responsive-example .caption.tabletUp {
